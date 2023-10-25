@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "YwOXzGawyVJ8YQytO3v/qbgCGZc2izdgM7LFsQSLfU4=",
+  "Source": "TikTokApi",
+  "BasePath": "_content/TikTokApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
