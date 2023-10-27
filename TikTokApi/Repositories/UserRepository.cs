@@ -32,5 +32,8 @@ public class UserRepository: IUserRepository {
     public bool UserExists(string username)
     {
         return _context.Users.Any(u => u.Username == username);
+    }public bool UserExists(int id)
+    {
+        return _context.Users.Any(u => u.Id == id);
     }
 }

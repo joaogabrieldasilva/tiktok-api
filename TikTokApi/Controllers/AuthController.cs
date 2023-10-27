@@ -11,7 +11,7 @@ using TikTokApi.Models;
 
 namespace TikTokApi.Controllers; 
 
-[Route("api/[controller]")]
+[Route("api/auth")]
 [ApiController]
 public class AuthController: Controller {
     private readonly IUserRepository _userRepository;
@@ -92,7 +92,7 @@ public class AuthController: Controller {
         var claims = new List<Claim>()
         {
             new Claim(ClaimTypes.Name, user.Username),
-            
+            new Claim("userId", user.Id.ToString())
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
@@ -101,7 +101,7 @@ public class AuthController: Controller {
 
         var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-        var token = new JwtSecurityToken(claims: claims, expires: DateTime.Now.AddSeconds(30), signingCredentials:cred, issuer: _configuration["JwtSettings:Issuer"]!, audience:_configuration["JwtSettings:Audience"]!);
+        var token = new JwtSecurityToken(claims: claims, expires: DateTime.Now.AddMinutes(15), signingCredentials:cred, issuer: _configuration["JwtSettings:Issuer"]!, audience:_configuration["JwtSettings:Audience"]!);
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
         

@@ -12,5 +12,8 @@ public interface IUserRepository {
     public User SaveUser(User user);
 
     bool UserExists(string username);
+    
+    bool UserExists(int id);
+    
 
 }
